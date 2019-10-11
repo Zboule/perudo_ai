@@ -1,0 +1,19 @@
+{
+  "name": "perudo_ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/game.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rxjs": "^6.5.3",
+    "ts-node-dev": "^1.0.0-pre.43",
+    "tsconfig-paths": "^3.9.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.6.4"
+  }
+}
