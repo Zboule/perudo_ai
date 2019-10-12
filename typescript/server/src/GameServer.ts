@@ -122,9 +122,7 @@ export class GameServer {
                 actionProposition.push(playerAction)
             }
         })
-        console.log('Ask for propositions start :', this.cpt)
         const selectedAction = await Promise.race<{ playerId: string, actionIndex: number }>(actionProposition)
-        console.log('Ask for propositions end :', this.cpt)
         const action: Action = game.value.gameState!.curentTurn!.availableActions[selectedAction.playerId][selectedAction.actionIndex]
 
         game.next({

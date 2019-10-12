@@ -94,14 +94,24 @@ const demo = async () => {
 
 
 const main = async () => {
+
+    const numberOfGames = 10
+    console.log('Start ' + numberOfGames + ' games')
+
     const winners: any = {}
-    for (let i = 0; i < 2; i++) {
-        console.time('perudogame' + i)
+
+    for (let i = 0; i < numberOfGames; i++) {
+
+        const time = Date.now()
+        console.log('')
+        console.log('Start game')
         const data = await demo()
-        fs.writeFileSync('results.json', JSON.stringify(data, null, 4))
+
         winners[data.winnerId] = winners[data.winnerId] === undefined ? 1 : winners[data.winnerId] + 1
-        console.log(data.winnerId)
-        console.timeEnd('perudogame' + i)
+        console.log('/End game: winner ', data.winnerId, ' in ', Date.now() - time, 'ms')
+        console.log('')
+        fs.writeFileSync('../../../results/results_game_' + i + '.json', JSON.stringify(data, null, 4))
+
     }
     console.log(winners)
 }
