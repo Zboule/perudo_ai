@@ -3,7 +3,6 @@ import { GameServer } from 'GameServer'
 import { HttpPlayer } from 'players/httpPlayer'
 const cors = require('cors')
 
-
 const perudo = new GameServer()
 
 const server = express()
