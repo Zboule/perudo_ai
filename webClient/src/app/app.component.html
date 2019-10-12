@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Perudo AI</h1>
+</mat-toolbar>
+
+<div>
+
+    <mat-drawer-container>
+        <mat-drawer #snav [opened]="true" [mode]="'side'">
+            <div>
+                Admin mode
+                <div>
+                    Create game menu
+                </div>
+                <div>
+                    Join game
+                </div>
+            </div>
+
+            <div>
+                Player mode
+                <div>
+                    Create game menu
+                </div>
+                <div>
+                    Join game
+                </div>
+            </div>
+
+        </mat-drawer>
+
+        <mat-drawer-content>
+            ICI DOIT VENIR LA GAME DE PERUDO CREE ou JOINTE
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>
