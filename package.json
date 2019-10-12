@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "node_demo": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly ./src/node_client.ts",
-    "node_demo": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly ./src/node_client.ts",
-    "rest_demo": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly ./src/rest_client.ts",
-    "rest_random_ai": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly ./src/httpPlayers/randomIA.ts"
+    "node_demo": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly ./src/node-demo.ts",
+    "rest_game_server": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly ./src/game/RestGameServer.ts",
+    "rest_demo": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly ./src/rest-demo.ts",
+    "rest_random_ai": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly ./src/ai/randomAI.ts"
   },
   "author": "",
   "license": "ISC",

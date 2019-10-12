@@ -67,5 +67,3 @@ const port = process.env.PORT || 3000
 server.listen(port, () => {
     return console.log(`Server is listening on ${port}`)
 });
-
-(global as any).globalString = "test"

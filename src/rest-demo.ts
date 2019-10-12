@@ -61,14 +61,13 @@ let demo = async () => {
     })
 
     let data = JSON.stringify(await response.json(), null, 2);
+
     fs.writeFileSync('results.json', data);
 }
 
 
-console.log(global)
-
-// console.time("perudo_game")
-// demo().then(() => {
-//     console.timeEnd("perudo_game")
-// })
+console.time("perudo_game")
+demo().then(() => {
+    console.timeEnd("perudo_game")
+})
 
