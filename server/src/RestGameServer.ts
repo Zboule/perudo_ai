@@ -1,10 +1,13 @@
 import express from 'express'
-import { GameServer } from 'game/GameServer'
-import { HttpPlayer } from 'game/players/httpPlayer'
+import { GameServer } from 'GameServer'
+import { HttpPlayer } from 'players/httpPlayer'
+var cors = require('cors')
+
 
 let perudo = new GameServer()
 
 const server = express()
+server.use(cors())
 server.use(express.json())
 
 server.post('/createGame', (req, res, next) => {
@@ -60,6 +63,10 @@ server.post('/doGame', async (req, res, next) => {
     catch (e) {
         next(e)
     }
+})
+
+server.get('/games', async (req, res, next) => {
+    res.send({ games: perudo.listGames() })
 })
 
 

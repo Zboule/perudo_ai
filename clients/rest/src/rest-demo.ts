@@ -95,10 +95,10 @@ let demo = async () => {
 
 const main = async () => {
     let winners: any = {}
-    for (let i = 0; i < 2000; i++) {
+    for (let i = 0; i < 2; i++) {
         console.time('perudogame' + i)
         let data = await demo()
-        fs.writeFileSync('results.json', data);
+        fs.writeFileSync('results.json', JSON.stringify(data, null, 4));
         winners[data.winnerId] = winners[data.winnerId] === undefined ? 1 : winners[data.winnerId] + 1
         console.log(data.winnerId)
         console.timeEnd('perudogame' + i)

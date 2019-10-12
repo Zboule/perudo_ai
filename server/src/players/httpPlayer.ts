@@ -1,5 +1,5 @@
-import { PlayerGameState } from "game/models/PlayerGameState";
-import { Player } from "game/models/Player";
+import { PlayerGameState } from "../../../models/PlayerGameState";
+import { Player } from "../../../models/Player";
 import fetch from "node-fetch"
 
 

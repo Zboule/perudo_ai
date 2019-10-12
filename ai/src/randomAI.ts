@@ -1,8 +1,6 @@
 import express from 'express'
-import { GameServer } from 'game/GameServer'
-import { PlayerGameState } from 'game/models/PlayerGameState'
+import { PlayerGameState } from '../../models/PlayerGameState'
 
-let perudo = new GameServer()
 
 const server = express()
 server.use(express.json())

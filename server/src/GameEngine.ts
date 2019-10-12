@@ -1,8 +1,7 @@
-import { range } from "rxjs"
-import { GameState } from "./models/GameState"
-import { Bucket } from "./models/Bucket"
-import { PlayerGameState } from "./models/PlayerGameState"
-import { Action } from "./models/Action"
+import { GameState } from "../../models/GameState"
+import { Bucket } from "../../models/Bucket"
+import { PlayerGameState } from "../../models/PlayerGameState"
+import { Action } from "../../models/Action"
 
 export class GameEngine {
 
