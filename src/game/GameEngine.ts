@@ -1,36 +1,8 @@
 import { range } from "rxjs"
-
-
-export type Action = {
-    readonly type: 'bait' | 'calza' | 'callBluff'
-    readonly playerId: string
-    readonly toPlayerId: string
-    readonly bait: Readonly<[number, number]>
-    readonly isTrue: boolean
-}
-
-export type Bucket = number[]
-
-
-export interface Turn {
-    readonly isSpecialTurn: boolean
-    readonly actions: Action[]
-    readonly result?: {
-        targetId: string
-        modifier: number
-    }
-}
-
-export interface GameState {
-    readonly playersIds: string[]
-    readonly buckets: { [playerId: string]: Bucket }
-    readonly diceCount: number[]
-    readonly numberOfDice: number
-    readonly availableActions: Action[]
-    readonly curentTurn: Turn
-    readonly previousTurn: Turn[]
-    readonly winnerId?: string
-}
+import { GameState } from "./models/GameState"
+import { Bucket } from "./models/Bucket"
+import { PlayerGameState } from "./models/PlayerGameState"
+import { Action } from "./models/Action"
 
 export class GameEngine {
 
@@ -49,11 +21,11 @@ export class GameEngine {
 
         let gameState: GameState = {
             playersIds: [...playersIds],
-            buckets,
-            diceCount,
-            numberOfDice,
-            availableActions: [],
             curentTurn: {
+                buckets: buckets,
+                availableActions: {},
+                diceCount,
+                numberOfDice,
                 isSpecialTurn: false,
                 actions: [],
                 result: undefined
@@ -66,104 +38,127 @@ export class GameEngine {
         return gameState
     }
 
-
     public doAction(gameState: GameState, action: Action): GameState {
-
 
         gameState = {
             ...gameState,
             curentTurn: {
-                ...gameState.curentTurn,
-                actions: [...gameState.curentTurn.actions, action]
+                ...gameState.curentTurn!,
+                actions: [...gameState.curentTurn!.actions, action]
             }
         }
 
-        if (action.type === "callBluff") {
-            let targetId = action.isTrue ? action.toPlayerId : action.playerId
-            gameState = this.passTurn(gameState, targetId, -1)
-            gameState = this.modifyBucketSize(gameState, targetId, -1)
-            gameState = this.throwDiece(gameState)
+        if (action.type === "callBluff" || action.type === "calza") {
+
+            let targetId
+            let modifier
+
+            if (action.type === "callBluff") {
+                targetId = action.isTrue ? action.toPlayerId : action.playerId
+                modifier = -1
+
+            } else {
+                targetId = action.playerId
+                modifier = action.isTrue ? +1 : -1
+            }
+
+            gameState = this.startNewTurn(gameState, targetId, modifier)
         }
 
-        if (action.type === "calza") {
-            let targetId = action.playerId
-            let modifier = action.isTrue ? +1 : -1
-            gameState = this.passTurn(gameState, targetId, modifier)
-            gameState = this.modifyBucketSize(gameState, targetId, modifier)
-            gameState = this.throwDiece(gameState)
-        }
 
         gameState = this.generateAvailableActions(gameState)
-        gameState = this.lookForWinner(gameState)
+
+
 
         return gameState
     }
 
-    private lookForWinner(gameState: GameState): GameState {
+    public generatePlayerGameState(gameState: GameState, playerId: string): PlayerGameState {
+
+
+
+        let bucketsSize: { [playerId: string]: number } = {}
+        gameState.playersIds.forEach(playerId => {
+            bucketsSize[playerId] = gameState.curentTurn!.buckets[playerId].length
+        })
+
+        let cleanCurrentTurn = { ...gameState.curentTurn! }
+        cleanCurrentTurn.actions = cleanCurrentTurn.actions.map(
+            (action) => {
+                return {
+                    type: action.type,
+                    playerId: action.playerId,
+                    toPlayerId: action.toPlayerId,
+                    bait: action.bait
+                }
+            }
+        )
+
+        return {
+            numberOfDice: gameState.curentTurn!.numberOfDice,
+            bucketsSize: bucketsSize,
+            availableActions: gameState.curentTurn!.availableActions[playerId],
+            bucket: gameState.curentTurn!.buckets[playerId],
+            curentTurn: cleanCurrentTurn,
+            previousTurn: { ...gameState.previousTurn }
+        }
+    }
+
+    private getWinnerId(buckets: { [playerId: string]: number[] }): string | undefined {
 
         let alivePlayerIDs: string[] = []
 
-        gameState.playersIds.forEach((playerId) => {
-            if (gameState.buckets[playerId].length > 0) {
+        Object.keys(buckets).forEach((playerId) => {
+            if (buckets[playerId].length > 0) {
                 alivePlayerIDs.push(playerId)
             }
         })
 
-        return {
-            ...gameState,
-            winnerId: alivePlayerIDs.length === 1 ? alivePlayerIDs[0] : undefined
-        }
+        return alivePlayerIDs.length === 1 ? alivePlayerIDs[0] : undefined
+
     }
 
-    private passTurn(gameState: GameState, targetId: string, modifier: number): GameState {
+    private startNewTurn(gameState: GameState, targetId: string, modifier: number): GameState {
+
+        let newBuckets: { [playerId: string]: Bucket } = {}
+        gameState.playersIds.forEach((playerId) => {
+            let nbOfDice = 5
+            if (gameState.curentTurn) {
+                nbOfDice = gameState.curentTurn!.buckets[playerId].length
+            }
+            if (playerId === targetId) {
+                nbOfDice += modifier
+            }
+            if (nbOfDice > 5) {
+                nbOfDice === 5
+            }
+            newBuckets[playerId] = this.makeNewBucket(nbOfDice)
+        })
+
+        let winnerId = this.getWinnerId(newBuckets)
+
         return {
             ...gameState,
-            curentTurn: {
-                isSpecialTurn: gameState.buckets[targetId].length === 1 ? true : false,
+            curentTurn: winnerId !== undefined ? undefined : {
+                buckets: newBuckets,
+                diceCount: this.getDiceRepartition(newBuckets),
+                numberOfDice: this.countDice(newBuckets),
+                isSpecialTurn: newBuckets[targetId].length === 1 ? true : false,
+                availableActions: {},
                 actions: []
             },
             previousTurn: [
                 ...gameState.previousTurn,
                 {
-                    ...gameState.curentTurn,
+                    ...gameState.curentTurn!,
+                    availableActions: {},
                     result: {
                         targetId,
-                        modifier
+                        modifier,
                     }
                 }
-            ]
-        }
-    }
-
-    private throwDiece(gameState: GameState): GameState {
-        let newBuckets: { [playerId: string]: Bucket } = {}
-        gameState.playersIds.forEach((playerId) => {
-            newBuckets[playerId] = this.makeNewBucket(gameState.buckets[playerId].length)
-        })
-
-        // TODO: Dice count doit etre différent en tours calza
-        let diceCount = this.getDiceRepartition(newBuckets)
-        let numberOfDice = this.countDice(newBuckets)
-        return {
-            ...gameState,
-            buckets: newBuckets,
-            diceCount,
-            numberOfDice,
-        }
-    }
-
-    private modifyBucketSize(gameState: GameState, targetId: string, modifier: number): GameState {
-        let newBucketSize = gameState.buckets[targetId].length + modifier
-        if (newBucketSize > 5) {
-            newBucketSize === 5
-        }
-
-        let buckets: { [playerId: string]: Bucket } = { ...gameState.buckets }
-        buckets[targetId] = this.makeNewBucket(newBucketSize)
-
-        return {
-            ...gameState,
-            buckets
+            ],
+            winnerId
         }
     }
 
@@ -175,41 +170,42 @@ export class GameEngine {
 
     private generateAvailableActions(gameState: GameState): GameState {
 
+        let availableActions: { [playerId: string]: Action[] } = {}
+        gameState.playersIds.forEach((playerId) => {
+            availableActions[playerId] = []
+        })
+
         if (gameState.winnerId) {
-            return {
-                ...gameState,
-                availableActions: []
-            }
+            return gameState
         }
 
         let lastActiveTurn =
-            gameState.curentTurn.actions.length > 0 ?
+            gameState.curentTurn!.actions.length > 0 ?
                 gameState.curentTurn :
                 gameState.previousTurn.length > 0 ?
                     gameState.previousTurn[gameState.previousTurn.length - 1] :
                     gameState.curentTurn
 
-        let lastAction: Action | undefined = lastActiveTurn.actions.length > 0 ? lastActiveTurn.actions[lastActiveTurn.actions.length - 1] : undefined
-        let playOrder = this.getPlayerOrder(lastAction, gameState.playersIds, gameState.buckets)
+        let lastAction: Action | undefined = lastActiveTurn!.actions.length > 0 ? lastActiveTurn!.actions[lastActiveTurn!.actions.length - 1] : undefined
+        let playOrder = this.getPlayerOrder(lastAction, gameState.playersIds, gameState.curentTurn!.buckets)
 
-        let availableActions: Action[] = []
 
         if (lastAction && lastAction.type === "bait") {
 
-            availableActions.push({
+            availableActions[playOrder.current].push({
                 type: 'calza',
                 playerId: playOrder.current,
                 toPlayerId: playOrder.previous as string,
                 bait: lastAction.bait,
-                isTrue: lastAction.bait[0] === gameState.diceCount[lastAction.bait[1]],
+                isTrue: lastAction.bait[0] === gameState.curentTurn!.diceCount[lastAction.bait[1]],
             })
 
-            availableActions.push({
+            availableActions[playOrder.current].push({
                 type: 'callBluff',
                 playerId: playOrder.current,
                 toPlayerId: playOrder.previous as string,
                 bait: lastAction.bait,
-                isTrue: lastAction.bait[0] < gameState.diceCount[lastAction.bait[1]],
+                isTrue: lastAction.bait[0] < gameState.curentTurn!.diceCount[lastAction.bait[1]],
             })
 
 
@@ -217,7 +213,7 @@ export class GameEngine {
 
         let availableBaits = this.generateAvailableBaits(gameState, lastAction)
 
-        availableActions.push(
+        availableActions[playOrder.current].push(
             ...availableBaits.map(
                 (bait) => {
                     let baitAction: Action = {
@@ -225,7 +221,7 @@ export class GameEngine {
                         playerId: playOrder.current,
                         toPlayerId: playOrder.next,
                         bait,
-                        isTrue: bait[0] < gameState.diceCount[bait[1] - 1]
+                        isTrue: bait[0] < gameState.curentTurn!.diceCount[bait[1] - 1]
                     }
                     return baitAction
                 }
@@ -233,11 +229,12 @@ export class GameEngine {
 
         )
 
-
-
         return {
             ...gameState,
-            availableActions
+            curentTurn: {
+                ...gameState.curentTurn!,
+                availableActions
+            }
         }
     }
 
@@ -272,7 +269,7 @@ export class GameEngine {
 
         if (!lastAction || lastAction.type !== "bait") {
             for (let diceValue = 2; diceValue <= 6; diceValue++) {
-                for (let nbOfDice = 1; nbOfDice <= gameState.numberOfDice; nbOfDice++) {
+                for (let nbOfDice = 1; nbOfDice <= gameState.curentTurn!.numberOfDice; nbOfDice++) {
                     availableBaits.push([nbOfDice, diceValue])
                 }
             }
@@ -280,12 +277,12 @@ export class GameEngine {
 
         else if (lastAction.type === "bait") {
             if (lastAction.bait[1] === 1) {
-                for (let nbOfDice = lastAction.bait[1] + 1; nbOfDice <= gameState.numberOfDice; nbOfDice++) {
+                for (let nbOfDice = lastAction.bait[1] + 1; nbOfDice <= gameState.curentTurn!.numberOfDice; nbOfDice++) {
                     availableBaits.push([nbOfDice, 1])
                 }
 
                 for (let diceValue = 2; diceValue <= 6; diceValue++) {
-                    for (let nbOfDice = (lastAction.bait[1] * 2 + 1); nbOfDice <= gameState.numberOfDice; nbOfDice++) {
+                    for (let nbOfDice = (lastAction.bait[0] * 2 + 1); nbOfDice <= gameState.curentTurn!.numberOfDice; nbOfDice++) {
                         availableBaits.push([nbOfDice, diceValue])
                     }
                 }
@@ -294,11 +291,11 @@ export class GameEngine {
                     availableBaits.push([lastAction.bait[0], diceValue])
                 }
 
-                for (let nbOfDice = lastAction.bait[0] + 1; nbOfDice <= gameState.numberOfDice; nbOfDice++) {
+                for (let nbOfDice = lastAction.bait[0] + 1; nbOfDice <= gameState.curentTurn!.numberOfDice; nbOfDice++) {
                     availableBaits.push([nbOfDice, lastAction.bait[1]])
                 }
 
-                for (let nbOfDice = Math.round(lastAction.bait[0] / 2); nbOfDice <= gameState.numberOfDice; nbOfDice++) {
+                for (let nbOfDice = Math.round(lastAction.bait[0] / 2); nbOfDice <= gameState.curentTurn!.numberOfDice; nbOfDice++) {
                     availableBaits.push([nbOfDice, 1])
 
                 }

@@ -1,0 +1,2260 @@
+{
+  "playersIds": [
+    "randomAI_1",
+    "randomAI_2",
+    "randomAI_3"
+  ],
+  "previousTurn": [
+    {
+      "buckets": {
+        "randomAI_1": [
+          5,
+          4,
+          5,
+          4,
+          4
+        ],
+        "randomAI_2": [
+          4,
+          5,
+          6,
+          5,
+          2
+        ],
+        "randomAI_3": [
+          4,
+          3,
+          2,
+          4,
+          5
+        ]
+      },
+      "availableActions": {},
+      "diceCount": [
+        0,
+        2,
+        1,
+        6,
+        5,
+        1
+      ],
+      "numberOfDice": 15,
+      "isSpecialTurn": false,
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            12,
+            5
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            13,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            6,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            15,
+            3
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            15,
+            4
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "callBluff",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            15,
+            4
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_3",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          5,
+          4,
+          4,
+          4,
+          4
+        ],
+        "randomAI_2": [
+          4,
+          4,
+          2,
+          2,
+          6
+        ],
+        "randomAI_3": [
+          5,
+          6,
+          2,
+          1
+        ]
+      },
+      "diceCount": [
+        1,
+        4,
+        1,
+        7,
+        3,
+        3
+      ],
+      "numberOfDice": 14,
+      "isSpecialTurn": false,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            6,
+            6
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            6,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            8,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "callBluff",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            8,
+            1
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_3",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          4,
+          1,
+          5,
+          2,
+          4
+        ],
+        "randomAI_2": [
+          3,
+          2,
+          1,
+          1,
+          5
+        ],
+        "randomAI_3": [
+          2,
+          5,
+          6
+        ]
+      },
+      "diceCount": [
+        3,
+        6,
+        4,
+        5,
+        6,
+        4
+      ],
+      "numberOfDice": 13,
+      "isSpecialTurn": false,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            6,
+            5
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            9,
+            5
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "callBluff",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            9,
+            5
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_2",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          4,
+          5,
+          6,
+          5,
+          6
+        ],
+        "randomAI_2": [
+          5,
+          1,
+          4,
+          3
+        ],
+        "randomAI_3": [
+          2,
+          6,
+          3
+        ]
+      },
+      "diceCount": [
+        1,
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "numberOfDice": 12,
+      "isSpecialTurn": false,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            3,
+            3
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "calza",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            3,
+            3
+          ],
+          "isTrue": true
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_3",
+        "modifier": 1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          4,
+          3,
+          1,
+          3,
+          1
+        ],
+        "randomAI_2": [
+          5,
+          3,
+          1,
+          1
+        ],
+        "randomAI_3": [
+          5,
+          2,
+          4,
+          6
+        ]
+      },
+      "diceCount": [
+        4,
+        5,
+        7,
+        6,
+        6,
+        5
+      ],
+      "numberOfDice": 13,
+      "isSpecialTurn": false,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            8,
+            6
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            9,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            11,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            5,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            12,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            4,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            11,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            6,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            7,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "calza",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            7,
+            1
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_3",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          3,
+          1,
+          1,
+          2,
+          1
+        ],
+        "randomAI_2": [
+          5,
+          6,
+          1,
+          4
+        ],
+        "randomAI_3": [
+          6,
+          2,
+          6
+        ]
+      },
+      "diceCount": [
+        4,
+        6,
+        5,
+        5,
+        5,
+        7
+      ],
+      "numberOfDice": 12,
+      "isSpecialTurn": false,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            9,
+            6
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            8,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            6,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            9,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            12,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            11,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            7,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            6,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            12,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            11,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            8,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            12,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            8,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            11,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            8,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            11,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            8,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            10,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            4,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            12,
+            3
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            10,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            10,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            5,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            12,
+            6
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            10,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            12,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            5,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            6,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            2,
+            1
+          ],
+          "isTrue": true
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            9,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            2,
+            1
+          ],
+          "isTrue": true
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            10,
+            4
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            9,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            8,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            7,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            6,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "calza",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            6,
+            1
+          ],
+          "isTrue": true
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_3",
+        "modifier": 1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          2,
+          2,
+          2,
+          4,
+          1
+        ],
+        "randomAI_2": [
+          2,
+          3,
+          5,
+          3
+        ],
+        "randomAI_3": [
+          4,
+          6,
+          1,
+          4
+        ]
+      },
+      "diceCount": [
+        2,
+        6,
+        4,
+        5,
+        3,
+        3
+      ],
+      "numberOfDice": 13,
+      "isSpecialTurn": false,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            12,
+            3
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            6,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            12,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            9,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            4,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            12,
+            3
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            8,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            3,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            11,
+            4
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "calza",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            11,
+            4
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_3",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          1,
+          4,
+          5,
+          1,
+          4
+        ],
+        "randomAI_2": [
+          1,
+          6,
+          1,
+          4
+        ],
+        "randomAI_3": [
+          1,
+          4,
+          1
+        ]
+      },
+      "diceCount": [
+        6,
+        6,
+        6,
+        10,
+        7,
+        7
+      ],
+      "numberOfDice": 12,
+      "isSpecialTurn": false,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            9,
+            2
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            9,
+            5
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            10,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            3,
+            1
+          ],
+          "isTrue": true
+        },
+        {
+          "type": "callBluff",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            3,
+            1
+          ],
+          "isTrue": true
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_3",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          5,
+          4,
+          4,
+          4,
+          6
+        ],
+        "randomAI_2": [
+          3,
+          4,
+          5,
+          4
+        ],
+        "randomAI_3": [
+          1,
+          6
+        ]
+      },
+      "diceCount": [
+        1,
+        1,
+        2,
+        6,
+        3,
+        3
+      ],
+      "numberOfDice": 11,
+      "isSpecialTurn": false,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            5,
+            6
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            3,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            9,
+            2
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            6,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            10,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            4,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            2,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            7,
+            6
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            6,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            6,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            5,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            10,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "callBluff",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            10,
+            1
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_3",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          1,
+          6,
+          3,
+          2,
+          5
+        ],
+        "randomAI_2": [
+          2,
+          3,
+          3,
+          2
+        ],
+        "randomAI_3": [
+          2
+        ]
+      },
+      "diceCount": [
+        1,
+        5,
+        4,
+        1,
+        2,
+        2
+      ],
+      "numberOfDice": 10,
+      "isSpecialTurn": true,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            5,
+            4
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            5,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            2,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            8,
+            6
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            9,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "callBluff",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            9,
+            1
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_2",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          4,
+          6,
+          6,
+          5,
+          1
+        ],
+        "randomAI_2": [
+          4,
+          4,
+          2
+        ],
+        "randomAI_3": [
+          4
+        ]
+      },
+      "diceCount": [
+        1,
+        2,
+        1,
+        5,
+        2,
+        3
+      ],
+      "numberOfDice": 9,
+      "isSpecialTurn": false,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            1,
+            6
+          ],
+          "isTrue": true
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            2,
+            6
+          ],
+          "isTrue": true
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            1,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            8,
+            6
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            9,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            8,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "calza",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            8,
+            1
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_2",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          6,
+          3,
+          1,
+          3,
+          5
+        ],
+        "randomAI_2": [
+          1,
+          1
+        ],
+        "randomAI_3": [
+          6
+        ]
+      },
+      "diceCount": [
+        3,
+        3,
+        5,
+        3,
+        4,
+        5
+      ],
+      "numberOfDice": 8,
+      "isSpecialTurn": false,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            1,
+            2
+          ],
+          "isTrue": true
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            7,
+            2
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            6,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            6,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            7,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            4,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            2,
+            1
+          ],
+          "isTrue": true
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            3,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            7,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            4,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            6,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            7,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            3,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "calza",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            3,
+            1
+          ],
+          "isTrue": true
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_3",
+        "modifier": 1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          4,
+          3,
+          3,
+          3,
+          3
+        ],
+        "randomAI_2": [
+          4,
+          6
+        ],
+        "randomAI_3": [
+          1,
+          3
+        ]
+      },
+      "diceCount": [
+        1,
+        1,
+        6,
+        3,
+        1,
+        2
+      ],
+      "numberOfDice": 9,
+      "isSpecialTurn": false,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            5,
+            5
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            8,
+            5
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            7,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            4,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            9,
+            3
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            9,
+            4
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            9,
+            5
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            9,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "callBluff",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            9,
+            1
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_2",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          5,
+          5,
+          3,
+          2,
+          1
+        ],
+        "randomAI_2": [
+          5
+        ],
+        "randomAI_3": [
+          3,
+          6
+        ]
+      },
+      "diceCount": [
+        1,
+        2,
+        3,
+        1,
+        4,
+        2
+      ],
+      "numberOfDice": 8,
+      "isSpecialTurn": true,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            5,
+            4
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            3,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            8,
+            4
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            8,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            4,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_2",
+          "bait": [
+            8,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "callBluff",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            8,
+            1
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_2",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          2,
+          6,
+          6,
+          6,
+          4
+        ],
+        "randomAI_2": [],
+        "randomAI_3": [
+          5,
+          1
+        ]
+      },
+      "diceCount": [
+        1,
+        2,
+        1,
+        2,
+        2,
+        4
+      ],
+      "numberOfDice": 7,
+      "isSpecialTurn": false,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_2",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            3,
+            6
+          ],
+          "isTrue": true
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            7,
+            6
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            5,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "callBluff",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            5,
+            1
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_3",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          6,
+          5,
+          4,
+          5,
+          5
+        ],
+        "randomAI_2": [],
+        "randomAI_3": [
+          3
+        ]
+      },
+      "diceCount": [
+        0,
+        0,
+        1,
+        1,
+        3,
+        1
+      ],
+      "numberOfDice": 6,
+      "isSpecialTurn": true,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            6,
+            6
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "callBluff",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            6,
+            6
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_1",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          2,
+          6,
+          1,
+          6
+        ],
+        "randomAI_2": [],
+        "randomAI_3": [
+          4
+        ]
+      },
+      "diceCount": [
+        1,
+        2,
+        1,
+        2,
+        1,
+        3
+      ],
+      "numberOfDice": 5,
+      "isSpecialTurn": false,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            3,
+            3
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            4,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            2,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            5,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "callBluff",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            5,
+            1
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_1",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          4,
+          3,
+          4
+        ],
+        "randomAI_2": [],
+        "randomAI_3": [
+          4
+        ]
+      },
+      "diceCount": [
+        0,
+        0,
+        1,
+        3,
+        0,
+        0
+      ],
+      "numberOfDice": 4,
+      "isSpecialTurn": false,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            3,
+            4
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            3,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "calza",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            3,
+            1
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_1",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          2,
+          2
+        ],
+        "randomAI_2": [],
+        "randomAI_3": [
+          1
+        ]
+      },
+      "diceCount": [
+        1,
+        3,
+        1,
+        1,
+        1,
+        1
+      ],
+      "numberOfDice": 3,
+      "isSpecialTurn": false,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            2,
+            5
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            2,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "calza",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            2,
+            1
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_1",
+        "modifier": -1
+      }
+    },
+    {
+      "buckets": {
+        "randomAI_1": [
+          3
+        ],
+        "randomAI_2": [],
+        "randomAI_3": [
+          1
+        ]
+      },
+      "diceCount": [
+        1,
+        1,
+        2,
+        1,
+        1,
+        1
+      ],
+      "numberOfDice": 2,
+      "isSpecialTurn": true,
+      "availableActions": {},
+      "actions": [
+        {
+          "type": "bait",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            2,
+            6
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "bait",
+          "playerId": "randomAI_3",
+          "toPlayerId": "randomAI_1",
+          "bait": [
+            2,
+            1
+          ],
+          "isTrue": false
+        },
+        {
+          "type": "callBluff",
+          "playerId": "randomAI_1",
+          "toPlayerId": "randomAI_3",
+          "bait": [
+            2,
+            1
+          ],
+          "isTrue": false
+        }
+      ],
+      "result": {
+        "targetId": "randomAI_1",
+        "modifier": -1
+      }
+    }
+  ],
+  "winnerId": "randomAI_3"
+}
