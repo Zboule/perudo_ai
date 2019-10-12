@@ -1,10 +1,10 @@
-import { PlayerGameState } from "../../../models/PlayerGameState";
-import { Player } from "../../../models/Player";
-import fetch from "node-fetch"
+import { PlayerGameState } from '../../../models/PlayerGameState'
+import { Player } from '../../../models/Player'
+import fetch from 'node-fetch'
 
 
 export const HttpPlayer = (playerId: string, AiURL: string) => {
-    let player: Player = {
+    const player: Player = {
         playerId,
         choseAction: (gameState: PlayerGameState, ) => {
             return fetch(

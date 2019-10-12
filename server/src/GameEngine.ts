@@ -1,7 +1,7 @@
-import { GameState } from "../../models/GameState"
-import { Bucket } from "../../models/Bucket"
-import { PlayerGameState } from "../../models/PlayerGameState"
-import { Action } from "../../models/Action"
+import { GameState } from '../../models/GameState'
+import { Bucket } from '../../models/Bucket'
+import { PlayerGameState } from '../../models/PlayerGameState'
+import { Action } from '../../models/Action'
 
 export class GameEngine {
 
@@ -10,18 +10,18 @@ export class GameEngine {
 
     public createGame(playersIds: string[]): GameState {
 
-        let buckets: { [playerId: string]: Bucket } = {}
+        const buckets: { [playerId: string]: Bucket } = {}
         playersIds.forEach((playerId) => {
             buckets[playerId] = this.makeNewBucket(5)
         })
 
-        let diceCount = this.getDiceRepartition(buckets)
-        let numberOfDice = this.countDice(buckets)
+        const diceCount = this.getDiceRepartition(buckets)
+        const numberOfDice = this.countDice(buckets)
 
         let gameState: GameState = {
             playersIds: [...playersIds],
             curentTurn: {
-                buckets: buckets,
+                buckets,
                 availableActions: {},
                 diceCount,
                 numberOfDice,
@@ -47,12 +47,12 @@ export class GameEngine {
             }
         }
 
-        if (action.type === "callBluff" || action.type === "calza") {
+        if (action.type === 'callBluff' || action.type === 'calza') {
 
             let targetId
             let modifier
 
-            if (action.type === "callBluff") {
+            if (action.type === 'callBluff') {
                 targetId = action.isTrue ? action.toPlayerId : action.playerId
                 modifier = -1
 
@@ -76,12 +76,12 @@ export class GameEngine {
 
 
 
-        let bucketsSize: { [playerId: string]: number } = {}
+        const bucketsSize: { [playerId: string]: number } = {}
         gameState.playersIds.forEach(playerId => {
             bucketsSize[playerId] = gameState.curentTurn!.buckets[playerId].length
         })
 
-        let cleanCurrentTurn = { ...gameState.curentTurn! }
+        const cleanCurrentTurn = { ...gameState.curentTurn! }
         cleanCurrentTurn.actions = cleanCurrentTurn.actions.map(
             (action) => {
                 return {
@@ -95,7 +95,7 @@ export class GameEngine {
 
         return {
             numberOfDice: gameState.curentTurn!.numberOfDice,
-            bucketsSize: bucketsSize,
+            bucketsSize,
             availableActions: gameState.curentTurn!.availableActions[playerId],
             bucket: gameState.curentTurn!.buckets[playerId],
             curentTurn: cleanCurrentTurn,
@@ -105,7 +105,7 @@ export class GameEngine {
 
     private getWinnerId(buckets: { [playerId: string]: number[] }): string | undefined {
 
-        let alivePlayerIDs: string[] = []
+        const alivePlayerIDs: string[] = []
 
         Object.keys(buckets).forEach((playerId) => {
             if (buckets[playerId].length > 0) {
@@ -119,7 +119,7 @@ export class GameEngine {
 
     private startNewTurn(gameState: GameState, targetId: string, modifier: number): GameState {
 
-        let newBuckets: { [playerId: string]: Bucket } = {}
+        const newBuckets: { [playerId: string]: Bucket } = {}
         gameState.playersIds.forEach((playerId) => {
             let nbOfDice = 5
             if (gameState.curentTurn) {
@@ -134,7 +134,7 @@ export class GameEngine {
             newBuckets[playerId] = this.makeNewBucket(nbOfDice)
         })
 
-        let winnerId = this.getWinnerId(newBuckets)
+        const winnerId = this.getWinnerId(newBuckets)
 
         return {
             ...gameState,
@@ -162,14 +162,14 @@ export class GameEngine {
     }
 
     private countDice(buckets: { [playerId: string]: Bucket }): number {
-        let numberOfDice = 0;
+        let numberOfDice = 0
         Object.keys(buckets).forEach((playerId) => numberOfDice += buckets[playerId].length)
         return numberOfDice
     }
 
     private generateAvailableActions(gameState: GameState): GameState {
 
-        let availableActions: { [playerId: string]: Action[] } = {}
+        const availableActions: { [playerId: string]: Action[] } = {}
         gameState.playersIds.forEach((playerId) => {
             availableActions[playerId] = []
         })
@@ -178,18 +178,18 @@ export class GameEngine {
             return gameState
         }
 
-        let lastActiveTurn =
+        const lastActiveTurn =
             gameState.curentTurn!.actions.length > 0 ?
                 gameState.curentTurn :
                 gameState.previousTurn.length > 0 ?
                     gameState.previousTurn[gameState.previousTurn.length - 1] :
                     gameState.curentTurn
 
-        let lastAction: Action | undefined = lastActiveTurn!.actions.length > 0 ? lastActiveTurn!.actions[lastActiveTurn!.actions.length - 1] : undefined
-        let playOrder = this.getPlayerOrder(lastAction, gameState.playersIds, gameState.curentTurn!.buckets)
+        const lastAction: Action | undefined = lastActiveTurn!.actions.length > 0 ? lastActiveTurn!.actions[lastActiveTurn!.actions.length - 1] : undefined
+        const playOrder = this.getPlayerOrder(lastAction, gameState.playersIds, gameState.curentTurn!.buckets)
 
 
-        if (lastAction && lastAction.type === "bait") {
+        if (lastAction && lastAction.type === 'bait') {
 
             availableActions[playOrder.current].push({
                 type: 'calza',
@@ -210,12 +210,12 @@ export class GameEngine {
 
         }
 
-        let availableBaits = this.generateAvailableBaits(gameState, lastAction)
+        const availableBaits = this.generateAvailableBaits(gameState, lastAction)
 
         availableActions[playOrder.current].push(
             ...availableBaits.map(
                 (bait) => {
-                    let baitAction: Action = {
+                    const baitAction: Action = {
                         type: 'bait',
                         playerId: playOrder.current,
                         toPlayerId: playOrder.next,
@@ -239,10 +239,10 @@ export class GameEngine {
 
     private getDiceRepartition(buckets: { [playerId: string]: Bucket }, countJocker: boolean = true): number[] {
 
-        let numberOfDice = [0, 0, 0, 0, 0, 0]
+        const numberOfDice = [0, 0, 0, 0, 0, 0]
 
         Object.keys(buckets).forEach((bucketId) => {
-            let bucket = buckets[bucketId]
+            const bucket = buckets[bucketId]
             bucket.forEach((dice) => {
                 if (dice === 1 && countJocker) {
                     numberOfDice[0] += 1
@@ -251,8 +251,7 @@ export class GameEngine {
                     numberOfDice[3] += 1
                     numberOfDice[4] += 1
                     numberOfDice[5] += 1
-                }
-                else {
+                } else {
                     numberOfDice[dice - 1] += 1
                 }
             })
@@ -264,17 +263,15 @@ export class GameEngine {
 
     private generateAvailableBaits(gameState: GameState, lastAction: Action | undefined): [number, number][] {
 
-        let availableBaits: [number, number][] = []
+        const availableBaits: [number, number][] = []
 
-        if (!lastAction || lastAction.type !== "bait") {
+        if (!lastAction || lastAction.type !== 'bait') {
             for (let diceValue = 2; diceValue <= 6; diceValue++) {
                 for (let nbOfDice = 1; nbOfDice <= gameState.curentTurn!.numberOfDice; nbOfDice++) {
                     availableBaits.push([nbOfDice, diceValue])
                 }
             }
-        }
-
-        else if (lastAction.type === "bait") {
+        } else if (lastAction.type === 'bait') {
             if (lastAction.bait[1] === 1) {
                 for (let nbOfDice = lastAction.bait[1] + 1; nbOfDice <= gameState.curentTurn!.numberOfDice; nbOfDice++) {
                     availableBaits.push([nbOfDice, 1])
@@ -313,10 +310,9 @@ export class GameEngine {
                 current: playersIds[0],
                 next: playersIds[1]
             }
-        }
-        else {
+        } else {
 
-            if (lastAction.type === "bait") {
+            if (lastAction.type === 'bait') {
 
 
 
@@ -325,20 +321,18 @@ export class GameEngine {
                     current: lastAction.toPlayerId,
                     next: this.getNextPlayerId(lastAction.toPlayerId, playersIds, buckets)
                 }
-            }
-            else if (lastAction.type === "calza") {
+            } else if (lastAction.type === 'calza') {
                 return {
                     previous: lastAction.playerId,
                     current: lastAction.playerId,
                     next: this.getNextPlayerId(lastAction.playerId, playersIds, buckets)
                 }
-            }
-            else { //lastAction.type === "callBluff"
+            } else { // lastAction.type === "callBluff"
 
-                let current = lastAction.isTrue ? lastAction.toPlayerId : lastAction.playerId
+                const current = lastAction.isTrue ? lastAction.toPlayerId : lastAction.playerId
                 return {
                     previous: lastAction.playerId,
-                    current: current,
+                    current,
                     next: this.getNextPlayerId(current, playersIds, buckets)
                 }
             }
@@ -350,7 +344,7 @@ export class GameEngine {
 
     private getNextPlayerId(currentPlayerId: string, playersIds: string[], buckets: { [playerId: string]: Bucket }): string {
 
-        let currentPlayerIndex = playersIds.indexOf(currentPlayerId)
+        const currentPlayerIndex = playersIds.indexOf(currentPlayerId)
 
         let nextPlayerIndex!: number
         let potentialNextPlayerIndex = currentPlayerIndex
@@ -373,7 +367,7 @@ export class GameEngine {
     }
 
     private makeNewBucket(bucketsSize: number): number[] {
-        let bucket = []
+        const bucket = []
         for (let i = 0; i < bucketsSize; i++) {
             bucket.push(this.getRamdomDice())
         }

@@ -1,11 +1,9 @@
-import { Observable, Subject, BehaviorSubject } from "rxjs";
-import { Game } from "../../models/Game";
-import { GameEngine } from "GameEngine";
-import { Player } from "../../models/Player";
-import { GameState } from "../../models/GameState";
-import { Action } from "../../models/Action";
-
-
+import { BehaviorSubject } from 'rxjs'
+import { Game } from '../../models/Game'
+import { GameEngine } from 'GameEngine'
+import { Player } from '../../models/Player'
+import { GameState } from '../../models/GameState'
+import { Action } from '../../models/Action'
 
 
 export class GameServer {
@@ -28,9 +26,8 @@ export class GameServer {
                 gameState: undefined
             })
             return this.games[gameId]
-        }
-        else {
-            throw Error("Game " + gameId + " already exist")
+        } else {
+            throw Error('Game ' + gameId + ' already exist')
         }
 
 
@@ -39,12 +36,12 @@ export class GameServer {
     public addPlayerToGame(player: Player, gameId: string) {
 
         if (this.games[gameId] === undefined) {
-            throw Error("Can't add player because the game doesn't exist")
+            throw Error('Can\'t add player because the game doesn\'t exist')
         }
         if (this.games[gameId].value.gameState !== undefined) {
-            throw Error("Can't add player to a started game")
+            throw Error('Can\'t add player to a started game')
         }
-        let newPlayers = { ...this.games[gameId].value.players }
+        const newPlayers = { ...this.games[gameId].value.players }
         newPlayers[player.playerId] = player
 
         this.games[gameId].next({
@@ -56,13 +53,13 @@ export class GameServer {
 
     public removePlayerFromGame(playerId: string, gameId: string) {
         if (this.games[gameId] === undefined) {
-            throw Error("Can't remove player because the game doesn't exist")
+            throw Error('Can\'t remove player because the game doesn\'t exist')
         }
         if (this.games[gameId].value.gameState !== undefined) {
-            throw Error("Can't remove player from a started game")
+            throw Error('Can\'t remove player from a started game')
         }
 
-        let newPlayers = { ...this.games[gameId].value.players }
+        const newPlayers = { ...this.games[gameId].value.players }
         delete newPlayers[playerId]
 
         this.games[gameId].next({
@@ -74,13 +71,13 @@ export class GameServer {
 
     public async startGame(gameId: string, action: 'full' | 'turn' | 'action' = 'full') {
 
-        let game = this.games[gameId]
+        const game = this.games[gameId]
 
         if (game === undefined) {
-            throw Error("Game doesn't exist")
+            throw Error('Game doesn\'t exist')
         }
         if (Object.keys(game.value.players).length < 2) {
-            throw Error("Not enougth players")
+            throw Error('Not enougth players')
         }
 
         if (game.value.gameState === undefined) {
@@ -94,14 +91,12 @@ export class GameServer {
             while (game.value.gameState !== undefined && game.value.gameState!.winnerId === undefined) {
                 await this.doGameAction(game)
             }
-        }
-        else if (action === 'turn') {
+        } else if (action === 'turn') {
             do {
                 await this.doGameAction(game)
 
             } while (game.value.gameState!.curentTurn!.actions.length > 0)
-        }
-        else if (action === 'action') {
+        } else if (action === 'action') {
             await this.doGameAction(game)
         }
 
@@ -112,14 +107,14 @@ export class GameServer {
     }
 
     private async doGameAction(game: BehaviorSubject<Game>) {
-        let actionProposition: Promise<{ playerId: string, actionIndex: number }>[] = []
+        const actionProposition: Promise<{ playerId: string, actionIndex: number }>[] = []
         this.cpt++
         game.value.gameState!.playersIds.forEach((playerId) => {
             if (game.value.gameState!.curentTurn!.availableActions[playerId].length > 0) {
 
-                let playerGameState = this.gameEngine.generatePlayerGameState(game.value.gameState!, playerId);
+                const playerGameState = this.gameEngine.generatePlayerGameState(game.value.gameState!, playerId);
                 (playerGameState as any).cpt = this.cpt
-                let playerAction = game.value.players[playerId].choseAction(playerGameState)
+                const playerAction = game.value.players[playerId].choseAction(playerGameState)
                     .then((actionIndex) => ({
                         playerId,
                         actionIndex
@@ -127,10 +122,10 @@ export class GameServer {
                 actionProposition.push(playerAction)
             }
         })
-        console.log("Ask for propositions start :", this.cpt)
-        let selectedAction = await Promise.race<{ playerId: string, actionIndex: number }>(actionProposition)
-        console.log("Ask for propositions end :", this.cpt)
-        let action: Action = game.value.gameState!.curentTurn!.availableActions[selectedAction.playerId][selectedAction.actionIndex]
+        console.log('Ask for propositions start :', this.cpt)
+        const selectedAction = await Promise.race<{ playerId: string, actionIndex: number }>(actionProposition)
+        console.log('Ask for propositions end :', this.cpt)
+        const action: Action = game.value.gameState!.curentTurn!.availableActions[selectedAction.playerId][selectedAction.actionIndex]
 
         game.next({
             ...game.value,

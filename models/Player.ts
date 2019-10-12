@@ -1,4 +1,4 @@
-import { PlayerGameState } from "./PlayerGameState";
+import { PlayerGameState } from './PlayerGameState'
 
 export interface Player {
     playerId: string

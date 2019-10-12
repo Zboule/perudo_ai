@@ -1,13 +1,13 @@
-import fetch from "node-fetch"
-import { Response } from "node-fetch"
-const fs = require('fs');
+import fetch from 'node-fetch'
+import { Response } from 'node-fetch'
+const fs = require('fs')
 
-let demo = async () => {
-    const gameURL = "http://localhost:3000"
+const demo = async () => {
+    const gameURL = 'http://localhost:3000'
 
     let response: Response
 
-    response = await fetch(gameURL + "/createGame", {
+    response = await fetch(gameURL + '/createGame', {
         method: 'POST',
         body: JSON.stringify({
             gameId: 'demo_game'
@@ -15,7 +15,7 @@ let demo = async () => {
         headers: { 'Content-Type': 'application/json' },
     })
 
-    response = await fetch(gameURL + "/addPlayerToGame", {
+    response = await fetch(gameURL + '/addPlayerToGame', {
         method: 'POST',
         body: JSON.stringify({
             gameId: 'demo_game',
@@ -26,7 +26,7 @@ let demo = async () => {
     })
 
 
-    response = await fetch(gameURL + "/addPlayerToGame", {
+    response = await fetch(gameURL + '/addPlayerToGame', {
         method: 'POST',
         body: JSON.stringify({
             gameId: 'demo_game',
@@ -36,7 +36,7 @@ let demo = async () => {
         headers: { 'Content-Type': 'application/json' },
     })
 
-    response = await fetch(gameURL + "/addPlayerToGame", {
+    response = await fetch(gameURL + '/addPlayerToGame', {
         method: 'POST',
         body: JSON.stringify({
             gameId: 'demo_game',
@@ -47,7 +47,7 @@ let demo = async () => {
     })
 
 
-    response = await fetch(gameURL + "/addPlayerToGame", {
+    response = await fetch(gameURL + '/addPlayerToGame', {
         method: 'POST',
         body: JSON.stringify({
             gameId: 'demo_game',
@@ -57,7 +57,7 @@ let demo = async () => {
         headers: { 'Content-Type': 'application/json' },
     })
 
-    response = await fetch(gameURL + "/addPlayerToGame", {
+    response = await fetch(gameURL + '/addPlayerToGame', {
         method: 'POST',
         body: JSON.stringify({
             gameId: 'demo_game',
@@ -68,7 +68,7 @@ let demo = async () => {
     })
 
 
-    response = await fetch(gameURL + "/addPlayerToGame", {
+    response = await fetch(gameURL + '/addPlayerToGame', {
         method: 'POST',
         body: JSON.stringify({
             gameId: 'demo_game',
@@ -78,11 +78,11 @@ let demo = async () => {
         headers: { 'Content-Type': 'application/json' },
     })
 
-    response = await fetch(gameURL + "/doGame", {
+    response = await fetch(gameURL + '/doGame', {
         method: 'POST',
         body: JSON.stringify({
             gameId: 'demo_game',
-            action: 'full' // 'turn' || 'action' 
+            action: 'full' // 'turn' || 'action'
         }),
         headers: { 'Content-Type': 'application/json' },
     })
@@ -94,11 +94,11 @@ let demo = async () => {
 
 
 const main = async () => {
-    let winners: any = {}
+    const winners: any = {}
     for (let i = 0; i < 2; i++) {
         console.time('perudogame' + i)
-        let data = await demo()
-        fs.writeFileSync('results.json', JSON.stringify(data, null, 4));
+        const data = await demo()
+        fs.writeFileSync('results.json', JSON.stringify(data, null, 4))
         winners[data.winnerId] = winners[data.winnerId] === undefined ? 1 : winners[data.winnerId] + 1
         console.log(data.winnerId)
         console.timeEnd('perudogame' + i)
@@ -106,7 +106,7 @@ const main = async () => {
     console.log(winners)
 }
 
-main().then(() => console.log("."))
+main().then(() => console.log('.'))
 
 
 

@@ -1,6 +1,6 @@
-import { Action } from "./Action";
-import { Bucket } from "./Bucket";
-import { Turn } from "./Turn";
+import { Action } from './Action'
+import { Bucket } from './Bucket'
+import { Turn } from './Turn'
 
 export interface PlayerGameState {
     readonly bucketsSize: { [playerId: string]: number }

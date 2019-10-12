@@ -5,8 +5,8 @@ const server = express()
 server.use(express.json())
 
 server.post('/selectAction', (req, res, next) => {
-    let gameState: PlayerGameState = req.body
-    let actionIndex = 0
+    const gameState: PlayerGameState = req.body
+    const actionIndex = 0
     res.send({ action: actionIndex })
 
 })
@@ -14,5 +14,5 @@ server.post('/selectAction', (req, res, next) => {
 const port = process.env.PORT || 3002
 server.listen(port, () => {
     return console.log(`Dumb AI is listening on ${port}`)
-});
+})
 

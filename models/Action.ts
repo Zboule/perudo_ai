@@ -1,4 +1,4 @@
-export type Action = {
+export interface Action {
     readonly type: 'bait' | 'calza' | 'callBluff'
     readonly playerId: string
     readonly toPlayerId: string

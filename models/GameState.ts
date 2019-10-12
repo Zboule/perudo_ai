@@ -1,6 +1,4 @@
-import { Bucket } from "./Bucket";
-import { Turn } from "./Turn";
-import { Action } from "./Action";
+import { Turn } from './Turn'
 
 export interface GameState {
     readonly playersIds: string[]

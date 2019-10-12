@@ -1,5 +1,5 @@
-import { Action } from "./Action";
-import { Bucket } from "./Bucket";
+import { Action } from './Action'
+import { Bucket } from './Bucket'
 
 export interface Turn {
     readonly buckets: { [playerId: string]: Bucket }

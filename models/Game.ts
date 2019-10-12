@@ -1,5 +1,5 @@
-import { Player } from "./Player";
-import { GameState } from "./GameState";
+import { Player } from './Player'
+import { GameState } from './GameState'
 
 export interface Game {
     gameId: string
