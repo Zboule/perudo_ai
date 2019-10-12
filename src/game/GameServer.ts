@@ -10,6 +10,8 @@ import { Action } from "./models/Action";
 
 export class GameServer {
 
+    private cpt = 0
+
     private games: {
         [gameId: string]: BehaviorSubject<Game>
     } = {}
@@ -111,11 +113,13 @@ export class GameServer {
 
     private async doGameAction(game: BehaviorSubject<Game>) {
         let actionProposition: Promise<{ playerId: string, actionIndex: number }>[] = []
+        this.cpt++
         game.value.gameState!.playersIds.forEach((playerId) => {
             if (game.value.gameState!.curentTurn!.availableActions[playerId].length > 0) {
-                let playerGameState = this.gameEngine.generatePlayerGameState(game.value.gameState!, playerId)
-                let playerAction = game.value.players[playerId]
-                    .choseAction(playerGameState)
+
+                let playerGameState = this.gameEngine.generatePlayerGameState(game.value.gameState!, playerId);
+                (playerGameState as any).cpt = this.cpt
+                let playerAction = game.value.players[playerId].choseAction(playerGameState)
                     .then((actionIndex) => ({
                         playerId,
                         actionIndex
@@ -123,7 +127,9 @@ export class GameServer {
                 actionProposition.push(playerAction)
             }
         })
+        console.log("Ask for propositions start :", this.cpt)
         let selectedAction = await Promise.race<{ playerId: string, actionIndex: number }>(actionProposition)
+        console.log("Ask for propositions end :", this.cpt)
         let action: Action = game.value.gameState!.curentTurn!.availableActions[selectedAction.playerId][selectedAction.actionIndex]
 
         game.next({

@@ -14,6 +14,7 @@ let demo = async () => {
         }),
         headers: { 'Content-Type': 'application/json' },
     })
+    // console.log(await response.json())
 
     response = await fetch(gameURL + "/addPlayerToGame", {
         method: 'POST',
@@ -24,6 +25,7 @@ let demo = async () => {
         }),
         headers: { 'Content-Type': 'application/json' },
     })
+    // console.log(await response.json())
 
 
     response = await fetch(gameURL + "/addPlayerToGame", {
@@ -35,6 +37,8 @@ let demo = async () => {
         }),
         headers: { 'Content-Type': 'application/json' },
     })
+    // console.log(await response.json())
+
 
     response = await fetch(gameURL + "/addPlayerToGame", {
         method: 'POST',
@@ -45,38 +49,7 @@ let demo = async () => {
         }),
         headers: { 'Content-Type': 'application/json' },
     })
-
-
-    response = await fetch(gameURL + "/addPlayerToGame", {
-        method: 'POST',
-        body: JSON.stringify({
-            gameId: 'demo_game',
-            playerId: 'randomAI_4',
-            playerURL: 'http://localhost:3001/selectAction'
-        }),
-        headers: { 'Content-Type': 'application/json' },
-    })
-
-    response = await fetch(gameURL + "/addPlayerToGame", {
-        method: 'POST',
-        body: JSON.stringify({
-            gameId: 'demo_game',
-            playerId: 'randomAI_5',
-            playerURL: 'http://localhost:3001/selectAction'
-        }),
-        headers: { 'Content-Type': 'application/json' },
-    })
-
-
-    response = await fetch(gameURL + "/addPlayerToGame", {
-        method: 'POST',
-        body: JSON.stringify({
-            gameId: 'demo_game',
-            playerId: 'randomAI_6',
-            playerURL: 'http://localhost:3001/selectAction'
-        }),
-        headers: { 'Content-Type': 'application/json' },
-    })
+    // console.log(await response.json())
 
     response = await fetch(gameURL + "/doGame", {
         method: 'POST',
@@ -87,23 +60,18 @@ let demo = async () => {
         headers: { 'Content-Type': 'application/json' },
     })
 
-    return response.json()
+    let data = JSON.stringify(await response.json(), null, 2);
 
-
+    fs.writeFileSync('results.json', data);
 }
 
 
 const main = async () => {
-    let winners: any = {}
-    for (let i = 0; i < 2000; i++) {
-        console.time('perudogame' + i)
-        let data = await demo()
-        fs.writeFileSync('results.json', data);
-        winners[data.winnerId] = winners[data.winnerId] === undefined ? 1 : winners[data.winnerId] + 1
-        console.log(data.winnerId)
-        console.timeEnd('perudogame' + i)
+    for (let i = 0; i < 3; i++) {
+        console.time("perudo_game")
+        await demo()
+        console.time("perudo_game")
     }
-    console.log(winners)
 }
 
 main().then(() => console.log("."))

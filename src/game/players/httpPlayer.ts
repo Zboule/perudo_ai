@@ -20,3 +20,4 @@ export const HttpPlayer = (playerId: string, AiURL: string) => {
     }
     return player
 }
+
