@@ -1,9 +1,16 @@
 import fetch from 'node-fetch'
 import { Response } from 'node-fetch'
+import { GameState } from '../../../models/GameState'
+
 const fs = require('fs')
 
-const demo = async () => {
-    const gameURL = 'http://localhost:3000'
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
+const gameURL = 'http://localhost:3000'
+
+const createGame = async () => {
 
     let response: Response
 
@@ -78,6 +85,12 @@ const demo = async () => {
         headers: { 'Content-Type': 'application/json' },
     })
 
+}
+
+
+
+const doAction = async () => {
+    let response
     response = await fetch(gameURL + '/doGame', {
         method: 'POST',
         body: JSON.stringify({
@@ -88,36 +101,69 @@ const demo = async () => {
     })
 
     return response.json()
-
-
 }
 
 
+const askContinue = () => {
+    return new Promise((resolve, reject) => {
+        readline.question(`Continue ?`, () => {
+            resolve()
+        })
+    })
+}
+
 const main = async () => {
 
-    const numberOfGames = 10
+    const numberOfGames = 1
     console.log('Start ' + numberOfGames + ' games')
 
     const winners: any = {}
 
-    for (let i = 0; i < numberOfGames; i++) {
+    await createGame()
 
-        const time = Date.now()
-        console.log('')
-        console.log('Start game')
-        const data = await demo()
+    let gameState: GameState
+    do {
+        console.log('Do action')
+        gameState = await doAction()
+        fs.writeFileSync('../../../results/results_game.json', JSON.stringify(gameState, null, 4))
 
-        winners[data.winnerId] = winners[data.winnerId] === undefined ? 1 : winners[data.winnerId] + 1
-        console.log('/End game: winner ', data.winnerId, ' in ', Date.now() - time, 'ms')
-        console.log('')
-        fs.writeFileSync('../../../results/results_game_' + i + '.json', JSON.stringify(data, null, 4))
+        await askContinue()
 
-    }
-    console.log(winners)
+    } while (gameState.winnerId === undefined)
+
+    console.log(gameState.winnerId)
 }
 
-main().then(() => console.log('.'))
+
+main().then(() => console.log('End'))
 
 
 
 
+
+
+// const main = async () => {
+
+//     const numberOfGames = 1
+//     console.log('Start ' + numberOfGames + ' games')
+
+//     const winners: any = {}
+
+//     await createGame()
+
+//     for (let i = 0; i < numberOfGames; i++) {
+
+
+//         const data = await doAction()
+
+//         winners[data.winnerId] = winners[data.winnerId] === undefined ? 1 : winners[data.winnerId] + 1
+//         fs.writeFileSync('../../../results/results_game_' + i + '.json', JSON.stringify(data, null, 4))
+
+//         readline.question(`Continue`, (name: string) => {
+//             console.log(`Hi ${name}!`)
+//             readline.close()
+//         })
+
+//     }
+//     console.log(winners)
+// }

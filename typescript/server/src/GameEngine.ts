@@ -273,7 +273,7 @@ export class GameEngine {
             }
         } else if (lastAction.type === 'bait') {
             if (lastAction.bait[1] === 1) {
-                for (let nbOfDice = lastAction.bait[1] + 1; nbOfDice <= gameState.curentTurn!.numberOfDice; nbOfDice++) {
+                for (let nbOfDice = lastAction.bait[0] + 1; nbOfDice <= gameState.curentTurn!.numberOfDice; nbOfDice++) {
                     availableBaits.push([nbOfDice, 1])
                 }
 

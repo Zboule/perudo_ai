@@ -1,6 +1,6 @@
 import { BehaviorSubject } from 'rxjs'
 import { Game } from '../../models/Game'
-import { GameEngine } from 'GameEngine'
+import { GameEngine } from './GameEngine'
 import { Player } from '../../models/Player'
 import { GameState } from '../../models/GameState'
 import { Action } from '../../models/Action'
