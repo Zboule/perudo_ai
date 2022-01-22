@@ -13,7 +13,7 @@
     "@types/node-fetch": "^2.5.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.1.1",
     "rxjs": "^6.5.3",
     "ts-node-dev": "^1.0.0-pre.43",
     "tsconfig-paths": "^3.9.0"
